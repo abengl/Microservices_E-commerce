@@ -1,0 +1,20 @@
+version: '3.8' #Specifies the version of the Docker Compose file format
+services: #Defines the services that will be run
+  mongodb:
+    image: mongo:7.0.5
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment: #Sets environment variables for the MongoDB container
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_ROOT_DATABASE: product-service
+    volumes: #Mounts a volume to persist data
+      - ./data:/data/db
+
+# docker-compose up -d
+# docker-compose down
+# docker-compose down --volumes
+# docker-compose ps
+# docker-compose restart
+# docker-compose logs
