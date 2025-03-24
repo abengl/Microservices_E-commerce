@@ -6,9 +6,9 @@ services: #Defines the services that will be run
     ports:
       - "27017:27017"
     environment: #Sets environment variables for the MongoDB container
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
-      MONGO_INITDB_ROOT_DATABASE: product-service
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_ROOT_DATABASE: ${MONGO_INITDB_ROOT_DATABASE}
     volumes: #Mounts a volume to persist data
       - ./data:/data/db
 
