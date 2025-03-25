@@ -11,12 +11,21 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Service class for managing products.
+ */
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class ProductService {
 	private final ProductRepository productRepository;
 
+	/**
+	 * Creates a new product.
+	 *
+	 * @param productRequest the request object containing product details
+	 * @return the response object containing created product details
+	 */
 	public ProductResponse createProduct(ProductRequest productRequest) {
 		Product product = Product.builder()
 				.name(productRequest.name())
@@ -29,6 +38,11 @@ public class ProductService {
 		return new ProductResponse(product.getId(), product.getName(), product.getDescription(), product.getPrice());
 	}
 
+	/**
+	 * Retrieves all products.
+	 *
+	 * @return a list of response objects containing product details
+	 */
 	public List<ProductResponse> getAllProducts() {
 		return productRepository.findAll()
 				.stream()

@@ -10,9 +10,12 @@ import org.springframework.context.annotation.Import;
 import org.testcontainers.containers.MongoDBContainer;
 
 
+/**
+ * Test class for the ProductServiceApplication.
+ * Uses Testcontainers to manage a MongoDB instance for integration tests.
+ */
 @Import(TestcontainersConfiguration.class)
-// Indicate that this is a Spring Boot test class with a random web environment port
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT) // Indicate that this is a Spring Boot test class with a random web environment port
 class ProductServiceApplicationTests {
 
 	// Define a static MongoDBContainer instance with the specified MongoDB version
@@ -27,13 +30,18 @@ class ProductServiceApplicationTests {
 	@LocalServerPort
 	private Integer port;
 
-	// Set up method to configure RestAssured before each test
+	/**
+	 * Set up method to configure RestAssured before each test.
+	 */
 	@BeforeEach
 	void setUp() {
 		RestAssured.baseURI = "http://localhost";
 		RestAssured.port = port;
 	}
 
+	/**
+	 * Test to verify that a product can be created successfully.
+	 */
 	@Test
 	void shouldCreateProduct() {
 		String requestBody = """

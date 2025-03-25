@@ -9,6 +9,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 
+/**
+ * Represents a product entity.
+ * This class is mapped to the "product" collection in MongoDB.
+ */
 @Document(value = "product")
 @AllArgsConstructor
 @NoArgsConstructor

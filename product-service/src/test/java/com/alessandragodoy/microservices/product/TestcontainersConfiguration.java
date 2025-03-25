@@ -6,9 +6,17 @@ import org.springframework.context.annotation.Bean;
 import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.utility.DockerImageName;
 
+/**
+ * Test configuration class for setting up Testcontainers.
+ */
 @TestConfiguration(proxyBeanMethods = false)
 class TestcontainersConfiguration {
 
+	/**
+	 * Bean definition for MongoDBContainer.
+	 *
+	 * @return a new instance of MongoDBContainer
+	 */
 	@Bean
 	@ServiceConnection
 	MongoDBContainer mongoDbContainer() {
