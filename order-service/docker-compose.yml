@@ -1,0 +1,21 @@
+version: '3.8' #Specifies the version of the Docker Compose file format
+services: #Defines the services that will be run
+  mysql:
+    image: mysql:8.3.0
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_USERNAME: ${MYSQL_ROOT_USERNAME}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_DATABASE: ${MYSQL_ROOT_DATABASE}
+    volumes: #Mounts a volume to persist data
+      - ./mysql:/var/lib/mysql
+
+# docker-compose up -d
+# docker-compose --env-file .env up -d
+# docker-compose down
+# docker-compose down --volumes
+# docker-compose ps
+# docker-compose restart
+# docker-compose logs
